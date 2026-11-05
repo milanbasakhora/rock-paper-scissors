@@ -1,3 +1,3 @@
 # rock-paper-scissors
 
-Hello Rock!
+Hello Rock! Hello Paper! Hello Scissors!
