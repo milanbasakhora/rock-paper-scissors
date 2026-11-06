@@ -1,5 +1,4 @@
 /* Write the logic to get the computer's choice */
-
 function getComputerChoice() {
   const randomNumber = Math.random() * 10;
   if (randomNumber < 10 / 3) {
@@ -11,38 +10,47 @@ function getComputerChoice() {
   }
 }
 
-/* Write the logic to get the player's choice */
-
-function getPlayerChoice() {
-    return prompt("Enter your choice (Rock, Paper, or Scissors):");
-}
-
 /* Declare the players score variables */
-
 let humanScore = 0;
 let computerScore = 0;
 
+/* Write the logic to get the player's choice */
+function getPlayerChoice() {
+  return prompt("Enter your choice (Rock, Paper, or Scissors):");
+}
+
 /* Write the logic to play a single round. */
 function playRound(humanChoice, computerChoice) {
-  if (humanChoice === computerChoice){
-    console.log("It's a draw!");
-  }else if (
+  if (humanChoice === computerChoice) {
+    return "It's a tie!";
+  } else if (
     (humanChoice === "rock" && computerChoice === "scissors") ||
     (humanChoice === "paper" && computerChoice == "rock") ||
     (humanChoice === "scissors" && computerChoice === "paper")
-  ){
+  ) {
     humanScore++;
-    console.log("You win!");
-  }else{
+    return "You win this round!";
+  } else {
     computerScore++;
-    console.log("You lose!");
+    return "Computer wins this round!";
   }
 }
 
-const humanSelection = getPlayerChoice().toLowerCase();
-const computerSelection = getComputerChoice();
-
-playRound(humanSelection, computerSelection);
-
 /* Write the logic to play a 5 round game */
+function playGame() {
+  for (let i = 0; i < 5; i++) {
+    const humanSelection = getPlayerChoice().toLowerCase();
+    const computerSelection = getComputerChoice();
+    playRound(humanSelection, computerSelection);
+  }
+  console.log(`Final Score: You- ${humanScore}, Computer- ${computerScore}`);
+  if (humanScore > computerScore) {
+    console.log("You Win!");
+  } else if (humanScore < computerScore) {
+    console.log("You Lose!");
+  } else {
+    console.log("Draw!");
+  }
+}
 
+playGame();
