@@ -1,4 +1,7 @@
-function getRandomChoice(randomNumber = Math.random() * 10) {
+/* Write the logic to get the computer's choice */
+
+function getComputerChoice() {
+  const randomNumber = Math.random() * 10;
   if (randomNumber < 10 / 3) {
     return "rock";
   } else if (randomNumber < 20 / 3 && randomNumber >= 10 / 3) {
@@ -8,24 +11,38 @@ function getRandomChoice(randomNumber = Math.random() * 10) {
   }
 }
 
+/* Write the logic to get the player's choice */
+
 function getPlayerChoice() {
     return prompt("Enter your choice (Rock, Paper, or Scissors):");
 }
 
-const computerChoice = getRandomChoice();
+/* Declare the players score variables */
 
-const playerChoice = getPlayerChoice();
+let humanScore = 0;
+let computerScore = 0;
 
-console.log("You:", playerChoice, " | ", "Computer:", computerChoice);
-
-if (playerChoice.length == computerChoice.length) {
-    console.log("It's a tie!");
-}else if(playerChoice == "rock" && computerChoice == "scissors") {
+/* Write the logic to play a single round. */
+function playRound(humanChoice, computerChoice) {
+  if (humanChoice === computerChoice){
+    console.log("It's a draw!");
+  }else if (
+    (humanChoice === "rock" && computerChoice === "scissors") ||
+    (humanChoice === "paper" && computerChoice == "rock") ||
+    (humanChoice === "scissors" && computerChoice === "paper")
+  ){
+    humanScore++;
     console.log("You win!");
-}else if(playerChoice == "paper" && computerChoice == "rock") {
-    console.log("You win!");
-}else if(playerChoice == "scissors" && computerChoice == "paper") {
-    console.log("You win!");
-}else {
-    console.log("Computer wins!");
+  }else{
+    computerScore++;
+    console.log("You lose!");
+  }
 }
+
+const humanSelection = getPlayerChoice().toLowerCase();
+const computerSelection = getComputerChoice();
+
+playRound(humanSelection, computerSelection);
+
+/* Write the logic to play a 5 round game */
+
