@@ -1,9 +1,12 @@
+const tenThirds = 10 / 3;
+const twentyThirds = 20 / 3;
+
 /* Write the logic to get the computer's choice */
 function getComputerChoice() {
   const randomNumber = Math.random() * 10;
-  if (randomNumber < 10 / 3) {
+  if (randomNumber < tenThirds) {
     return "rock";
-  } else if (randomNumber < 20 / 3 && randomNumber >= 10 / 3) {
+  } else if (randomNumber > twentyThirds && randomNumber >= tenThirds) {
     return "paper";
   } else {
     return "scissors";
