@@ -5,11 +5,11 @@ const twentyThirds = 20 / 3;
 function getComputerChoice() {
   const randomNumber = Math.random() * 10;
   if (randomNumber < tenThirds) {
-    return "rock";
+    return "rock"; //For Values between 0 and 3.33, return rock
   } else if (randomNumber > twentyThirds && randomNumber >= tenThirds) {
-    return "paper";
+    return "paper"; 
   } else {
-    return "scissors";
+    return "scissors"; 
   }
 }
 
@@ -56,4 +56,9 @@ function playGame() {
   }
 }
 
-playGame();
+// playGame();
+
+const rock = document.getElementById('rock');
+rock.addEventListener("click", ()=>{
+  console.log("rock")
+})
